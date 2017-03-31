@@ -1,0 +1,167 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/soria/soria.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	
+	require(["dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!"],
+	
+	  function(registry,dom,query,parser){
+			parser.parse();
+			
+			registry.byId('btn0').on('click',function(){
+				registry.byId('dialog4').show();
+			});
+			registry.byId('yes').on('click',function(){
+				console.log("Hureeyyy...going on hlidays!");
+				registry.byId('dialog1').hide();
+			});
+			registry.byId('no').on('click',function(){
+				console.log("Alas...not going on hlidays!");
+				registry.byId('dialog1').hide();
+			});
+
+
+		});
+
+	
+</script>
+</head>
+<body class="soria">
+
+
+	<div id='btn0' data-dojo-type="dijit/form/Button">Show</div>
+
+	<div id='dialog4' data-dojo-type="dijit/Dialog" title='Tab Dialog'> 
+
+		<div id='tabs' style="width:500;height:500" data-dojo-type="dijit/layout/TabContainer" tabPosition='top'>
+			<div data-dojo-type="dijit/layout/ContentPane" title='Politics'>
+				<h2>Politics is a good business.</h2>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title='Entertainment' closable=true>
+				<ul>
+					<li>Movies</li>
+					<li>Songs</li>
+					<li>Facebook</li>
+					<li>Mobile</li>
+					<li>Games</li>
+				</ul>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title='Sports' selected=true>
+				<input type=checkbox value=Cricket data-dojo-type="dijit/form/CheckBox" />Cricket<br>
+				<input type=checkbox value=Football data-dojo-type="dijit/form/CheckBox" />Football<br>
+				<input type=checkbox value=Tennis data-dojo-type="dijit/form/CheckBox" />Tennis<br>
+				<input type=checkbox value=Kusti data-dojo-type="dijit/form/CheckBox" />Kusti<br>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title='User' href='reg.html'>
+			</div>
+			<div data-dojo-type="dijit/layout/ContentPane" title='DOJO' href='dojo.jsp'>
+			</div>
+		</div>
+	
+	
+
+	</div>
+
+	
+	<div id='dialog3' data-dojo-type="dijit/Dialog" title='User Dialog'> 
+
+		<center>
+			<form id='regForm'>
+			<table>
+			<tr>
+				<td>User ID:</td>
+				<td><input id=userid name=userid type=text value=raj123 data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'ID is must!'" /></td>
+			</tr>
+			<tr>
+				<td>Name:</td>
+				<td><input id=name name=name type=text value=raju data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'Name is required!'" /></td>
+			</tr>
+			<tr>
+				<td>Password:</td>
+				<td><input id=pass name=pass type=password value=secret data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'Password is required!'" /></td>
+			</tr>
+			<tr>
+				<td>Age:</td>
+				<td><input id=age name=age type=text value=24 data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="required:true,missingMessage:'Age is required!',invalidMessage:'Age must be in numbers!',constraints:{min:20,max:40},rangeMessage:'Age should be between 20 & 40'" /></td>
+			</tr>
+			<tr>
+				<td>DOB:</td>
+				<td><input id=dob name=dob type=text data-dojo-type="dijit/form/DateTextBox" data-dojo-props="constraints:{datePattern:'dd-MM-yy',max:new Date()}"></td>
+			</tr>
+			<tr>
+				<td>TOB:</td>
+				<td><input id=tob name=tob type=text data-dojo-type="dijit/form/TimeTextBox"></td>
+			</tr>
+			<tr>
+				<td>City:</td>
+				<td>
+					<select id=city name=city data-dojo-type="dijit/form/FilteringSelect" autocomplete=false>
+						<option value='Delhi'>Delhi</option>
+						<option value='Dehradun'>Dehradun</option>
+						<option value='Dhanbad'>Dhanbad</option>
+						<option value='Mumbai'>Mumbai</option>
+						<option value='Muradabad'>Muradabad</option>
+						<option value='Muzaffarnagar'>Muzaffarnagar</option>
+						<option value='Chennai'>Chennai</option>
+						<option value='Cochin'>Cochin</option>
+						<option value='Coimbotre'>Coimbatore</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>Balance:</td>
+				<td><input id=bal name=bal type=text value='12000000000' data-dojo-type="dijit/form/CurrencyTextBox" currency="GBP"></td>
+			</tr>
+			<tr>
+				<td>Weight(KG):</td>
+				<td>
+					<input style='width:80%' id=weigth name=weight type=text value='96' minimum=20 maximum=200 data-dojo-type="dijit/form/HorizontalSlider" intermediatechanges=true onChange=displayWeight>
+					<div id='weightDiv'></div>
+				</td>
+			</tr>
+			<tr>
+				<td>Height(cm):</td>
+				<td>
+					<input id=height name=height type=text value='45' data-dojo-type="dijit/form/NumberSpinner">
+				</td>
+			</tr>
+			</table>
+			</form>
+			</center>
+
+	</div>
+
+	<div id='dialog2' data-dojo-type="dijit/Dialog" title='Weather Info'> 
+			<h1>It is cloudy outside!</h2>
+	</div>
+
+
+	<div id='dialog1' data-dojo-type="dijit/Dialog" title='Confirm Dialog'> 
+			<h2>Do You want to go on Maldivas holidays?</h2>
+			<div id='yes' data-dojo-type="dijit/form/Button">Yes</div>
+			<div id='no' data-dojo-type="dijit/form/Button">No</div>
+	</div>
+
+
+	<div id='dialog0' data-dojo-type="dijit/Dialog" title='Car Wish List' draggable=true> 
+		<table width=400>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+			<tr><td>Audi</td><td>23400000</td><td>Black</td></tr>
+		</table>
+		
+	</div>
+
+
+</body>
+</html>

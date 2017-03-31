@@ -1,0 +1,60 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/claro/claro.css";
+	@import "js/dojox/grid/resources/claroGrid.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojox/grid/DataGrid","dojo/data/ObjectStore","dojo/store/Memory","dojo/request","dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!"],
+	
+	  function(DataGrid,ObjectStore,Memory,request,registry,dom,query,parser){
+			parser.parse();
+
+			request.get("cars.json",{handleAs:'json'}).then(
+				
+				function(cars){
+						var memoryStore=new Memory({data:cars.items});
+						var carStore=new ObjectStore({objectStore:memoryStore});
+						
+						var grid=new DataGrid({
+							store:carStore,
+							query:{vin:"*"},
+							structure:[
+								
+								{
+									noScroll:true,
+									cells:[
+										{name:'Name',field:'model',width:'40px'},
+										{name:'Company',field:'make'}
+									]
+								},
+								{						
+									cells:[
+										{name:'Price',field:'price'},
+										{name:'Color',field:'color'},
+										{name:'Qty',field:'qty'}
+									]
+								}
+
+							]
+						});
+						grid.set('style',"width:400");
+						grid.placeAt(document.body);
+						grid.startup();
+					}
+			);
+
+			
+	});
+
+	
+</script>
+</head>
+<body class="claro">
+</body>
+</html>

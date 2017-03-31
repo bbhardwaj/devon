@@ -1,0 +1,24 @@
+<html>
+<head>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["ibm/bpm/Circle","dojo/parser","dojo/ready"],function(Circle,parser,ready){
+
+		ready(function(){
+			parser.parse();
+			
+			var c1=new Circle();
+			console.log(c1.calcArea());
+		});
+		
+	
+	});
+
+</script>
+</head>
+<body>
+	<div data-dojo-type="ibm/bpm/Circle"></div>
+</body>
+</html>

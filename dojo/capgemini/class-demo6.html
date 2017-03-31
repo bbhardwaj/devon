@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require(['dojo/_base/declare'],function (declare){
+
+		//declare(classname,parentclass,body);
+		//declare(parentclass,body);
+
+		//var Employee = declare('Employee',null);
+
+		//declare('Employee',null);
+		
+		//declare('Employee',null,{
+		var Employee = declare(null,{
+			id:100,
+			name:'Jaggu',
+			salary:560000.00,
+			dob:new Date(),
+			info:function(){ 
+				console.warn('Employee informantion is displayed!!!'); 
+				console.info('ID : '+this.id); 
+				console.info('Name : '+this.name); 
+				console.info('Salary : '+this.salary); 
+				console.info('DOB : '+this.dob); 
+			},
+			updateSalary:function(){ 
+				this.salary = this.salary + (this.salary * .80); 
+				console.info('Salary is updated!!!'); 
+			}
+		});
+		
+		var e1 = new Employee();		
+		var e2 = new Employee();		
+
+		e1.info();
+		e1.updateSalary();
+		e1.info();
+		
+		e2.info();
+		e2.updateSalary();
+		e2.info();
+
+		/*console.log(e1.id);		
+		console.log(e1.name);		
+		console.log(e1.salary);		
+		console.log(e1.dob);
+		*/
+
+		//e1.updateSalary();
+		//console.log(e1.salary);		
+
+
+		//e2.info();		
+
+		/*console.log(e2.id);		
+		console.log(e2.name);		
+		console.log(e2.salary);		
+		console.log(e2.dob);		
+		*/
+		//e2.updateSalary();
+		//console.log(e2.salary);		
+
+
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

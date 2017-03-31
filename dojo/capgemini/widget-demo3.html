@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	.weather { 	
+		background-color:gray; 
+		width:450px;
+		border:5px solid blue;
+		border-radius:10px;
+		text-align:center;
+		color:white;
+	}
+	.weather button { 	
+		background-color:blue; 
+		color:white;
+		width:70%;
+		border-radius:20px;
+		outline:none;
+		line-height:1.4em;
+		margin-bottom:10px;
+	}
+
+</style>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require([
+		'dojo/parser',
+		'dojo/query',
+		'dojo/dom-class',
+		'dojo/dom-construct',
+		'dijit/_WidgetBase',
+		'dojo/_base/declare',
+		'dojo/domReady!'],
+	   function (parser,query,domClass,domConstruct,_WidgetBase,declare){
+		
+		declare('WeatherWidget',[_WidgetBase],{
+
+			city:'Banglore',
+			minTemp:0,
+			maxTemp:0,
+
+			class:'weather',
+			
+			constructor:function(args){
+				declare.safeMixin(this,args);
+				console.info("Inside WeatherWidget constructor!!!");
+			},
+
+			buildRendering:function(){
+				var nd = domConstruct.create('div');
+				domConstruct.create('h1',{innerHTML:'Weather is very hot in '+this.city},nd);
+				domConstruct.create('p',{innerHTML:'Minimum Temprature : '+this.minTemp},nd);
+				domConstruct.create('p',{innerHTML:'Maximum Temprature : '+this.maxTemp},nd);
+				domConstruct.create('button',{innerHTML:'Change'},nd);
+	
+				this.domNode = nd;
+			},
+
+			postCreate:function(){
+				query('.weather button').on('click',function(){
+					console.log("Weather changed!!!!");
+				});
+			}
+		
+		});
+
+		var weather = new WeatherWidget({city:'Delhi',minTemp:35,maxTemp:52},'div0');
+		weather.startup();
+
+		parser.parse();
+
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'></div>
+	<div id='div1' data-dojo-type='WeatherWidget' data-dojo-props="city:'Chennai',minTemp:35,maxTemp:62"></div>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	define('joke',[],function(){
+		
+		var jokes = ['Mondays are very welcome','Fridays are very boring','Wednesdays are amazing','Tuesdays are very funny'];		
+
+		function nextJoke(){
+			var idx = Math.floor(Math.random()*jokes.length);
+			return jokes[idx];
+		};
+
+		return nextJoke;
+	});
+
+
+	//Developer 1 writing module for reusability
+	define('cal',['joke','dojo/dom'],function(joke,dom){
+
+		return {
+			title:'Math Calc',
+			currentTime:new Date(),
+			add:function (a,b){
+				console.log(joke());
+				console.log(a+b);
+				dom.byId('div0').innerHTML = a+b;
+			},
+			subtract:function (a,b){
+				console.log(joke());
+				console.log(a-b);
+				dom.byId('div0').innerHTML = a-b;
+			}
+		};
+
+		//return obj;		
+	});
+	
+
+	//Developer 2 loading module
+	require(['cal','dojo/domReady!'],function(cal){
+
+		console.log(cal.title);
+		console.log(cal.currentTime);
+
+		cal.add(10,5);
+		cal.subtract(10,5);
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'></div>
+</body>
+</html>

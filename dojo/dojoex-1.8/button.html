@@ -1,0 +1,36 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/claro/claro.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dijit/registry","dojo/dom","dojo/query","dojo/parser","dijit/form/Button","dojo/domReady!"],
+	
+	  function(registry,dom,query,parser,Button){
+			parser.parse();
+			
+			var widget0=new Button({label:'Mail',iconClass:'dijitIconMail',onClick:doWork},'div0');
+			widget0.setLabel('Email');
+			
+			registry.byId("btn2").setLabel('Find');
+	});
+
+	function doWork(){
+		console.log("Button clicked!");
+	}
+	
+</script>
+</head>
+<body class="claro">
+	<div id='div0'></div>
+	<div id='btn0' data-dojo-type="dijit/form/Button" data-dojo-props="label:'Save',showLabel:true,iconClass:'dijitIconSave',onClick:doWork">OK</div>
+	<h1  id='btn1' data-dojo-type="dijit/form/Button" data-dojo-props="label:'Delete',showLabel:true,iconClass:'dijitIconDelete',onClick:doWork">OK</h1>
+	<input  id='btn2' type=button value=GO data-dojo-type="dijit/form/Button" data-dojo-props="label:'Search',showLabel:true,iconClass:'dijitIconSearch',onClick:doWork" />
+
+</body>
+</html>

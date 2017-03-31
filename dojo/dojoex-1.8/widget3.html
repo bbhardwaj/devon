@@ -1,0 +1,53 @@
+<html>
+<head>
+<style type='text/css'>
+	@import "Car.css";
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/fx","dojo/dom","dijit/registry","dojo/on","dojo/dom-construct","dijit/_WidgetBase","dijit/_TemplatedMixin","dojo/_base/declare","dojo/parser","dojo/ready","dojo/text!./Car.html"],
+	
+	function(fx,dom,registry,on,domConstruct,_WidgetBase,_TemplatedMixin,declare,parser,ready,carTemplate){
+
+		declare("Car",[_WidgetBase,_TemplatedMixin],{
+			make:'BMW',
+			doors:2,
+			model:'X5',
+			color:'Black',
+			image:'images/dodge.png',
+			baseClass:'carWidget',
+			
+			_setMakeAttr:{node:'companyNode',type:'innerHTML'},
+			_setImageAttr:{node:'imageNode',attribute:'src'},
+			
+			templateString:carTemplate,
+						
+			postCreate:function(){
+				var img=this.imageNode;
+				on(img,'click',function(){
+					fx.wipeOut({node:img}).play();
+				});			
+				on(this.detailNode,'click',function(){
+					fx.wipeIn({node:img}).play();
+				});			
+			}			
+		});
+		
+		ready(function(){
+			parser.parse();
+			
+			var w0=registry.byId('div0');
+			w0.set('make','Ferrari');
+			w0.set('image','images/ferrari.png');
+		});
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0' data-dojo-type="Car"></div>
+	<div id='div1' data-dojo-type="Car" data-dojo-props="make:'Hyundai',color:'Yellow',image:'images/hyundai_coupe.png'"><div>
+</body>
+</html>

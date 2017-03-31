@@ -1,0 +1,44 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/claro/claro.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	
+	require(["dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!"],
+	
+	  function(registry,dom,query,parser){
+			parser.parse();
+			
+	});
+
+	function doWork(val){
+		console.log("You selected : "+val);
+	}
+	
+</script>
+</head>
+<body class="claro">
+
+	<div data-dojo-type="dijit/Menu">
+		<div data-dojo-type="dijit/MenuItem" label='Games' onclick="doWork('Games');"></div>
+		<div data-dojo-type="dijit/PopupMenuItem" label='Movies'>
+			<div data-dojo-type="dijit/Menu">
+				<div data-dojo-type="dijit/MenuItem" label='Action' onclick="doWork('Action');"></div>
+				<div data-dojo-type="dijit/MenuItem" label='Art' onclick="doWork('Art');"></div>
+				<div data-dojo-type="dijit/MenuItem" label='Fiction' onclick="doWork('Fiction');"></div>
+			</div>
+		</div>
+		<div data-dojo-type="dijit/MenuItem" label='Songs' onclick="doWork('Songs');"></div>
+		<div data-dojo-type="dijit/MenuSeparator"></div>
+		<div data-dojo-type="dijit/MenuItem" label='File'></div>
+		<div data-dojo-type="dijit/MenuItem" label='Format'></div>
+
+	</div>
+</body>
+</html>

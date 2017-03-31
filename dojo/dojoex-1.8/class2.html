@@ -1,0 +1,35 @@
+<html>
+<head>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/_base/declare","dojo/parser","dojo/ready"],function(declare,parser,ready){
+
+		var Car=declare(null,{
+			make:'Tata',
+			color:'Yellow',
+			price:2300000.00,
+			constructor:function(){
+				console.log('Inside constructor');
+			}
+		});
+		
+		ready(function(){
+			//parser.parse();
+			
+			var c1=new Car();
+			console.log(c1.make);
+			console.log(c1.color);
+			console.log(c1.price);
+
+		});
+		
+	
+	});
+
+</script>
+</head>
+<body>
+</body>
+</html>

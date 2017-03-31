@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<products>
+	<product pid='100'>
+		<name>Pen</name>
+		<price>120.00</price>
+		<qty>10</qty>
+	</product>
+	<product pid='101'>
+		<name>Pencil</name>
+		<price>110.00</price>
+		<qty>15</qty>
+	</product>
+	<product pid='102'>
+		<name>Laptop</name>
+		<price>12000.00</price>
+		<qty>40</qty>
+	</product>
+	<product pid='103'>
+		<name>Mobile</name>
+		<price>560000.00</price>
+		<qty>10</qty>
+	</product>
+	<product pid='104'>
+		<name>Watch</name>
+		<price>3420.00</price>
+		<qty>5</qty>
+	</product>
+</products>

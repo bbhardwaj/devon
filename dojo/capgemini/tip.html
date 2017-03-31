@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='./js/dijit/themes/soria/soria.css' />
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/on','dijit/registry','dojo/dom','dojo/parser','dojo/domReady!'],
+	    function(query,on,registry,dom,parser){
+		parser.parse();	
+		
+	});
+
+	
+</script>
+</head>
+<body class='soria'>
+
+	<span data-dojo-type='dijit/Tooltip' connectId="span0">
+		Laden was a very humble man.
+	</span>	
+	<span id='span0'>Laden</span>
+</body>
+</html>

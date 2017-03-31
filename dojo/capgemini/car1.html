@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+	#div0 { 
+		background-color:gray;
+		width:400px;
+		margin:auto;
+		box-shadow:10px 20px 50px blue;
+	}
+
+	#div0 table { 
+		width:100%; 
+		text-align:center;
+	}
+
+	#div0 table thead tr {
+		background-color:blue;
+		color:white; 
+	}
+
+	#div0 table tbody tr {
+		line-height:1.4em;
+	}
+
+	#div0 table tbody tr:nth-child(even) {
+		background-color:lightblue;
+		color:white; 
+	}
+
+</style>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require([
+		'dojo/dom-construct',
+		'dojo/json',
+		'dojo/query',
+		'dojo/dom',
+		'dojo/request',
+		'dojo/on',
+		'dojo/domReady!',
+		'dojo/NodeList-manipulate'],
+	
+        function (domConstruct,json,query,dom,request,on){
+		
+		on(dom.byId('link0'),'click',function (){
+			var pr = request.get("cars.json",{handleAs:'json'});
+			pr.then(handleData,handleError);
+			console.log("AJAX request sent!!!!");
+		});
+
+		function handleData(arr) {
+			console.log("Data received!!!!");
+			//var content = json.parse(arr);
+			//query('#div0').text(content);
+			var table = domConstruct.create('table');
+			domConstruct.place(table,dom.byId('div0'));
+			query(table).append("<thead><tr><th>VIN</th><th>NAME</th><th>COMPANY</th><th>PRICE</th><th>COLOR</th></tr></thead>");
+			var tbody = domConstruct.create('tbody');
+			domConstruct.place(tbody,table);
+		
+			for(var i=0;i<arr.length;i++){
+				var car = arr[i];
+				
+				var tr = domConstruct.create('tr');
+				domConstruct.place(tr,tbody);
+				domConstruct.create('td',{innerHTML:car.vin},tr);
+				domConstruct.create('td',{innerHTML:car.model},tr);
+				domConstruct.create('td',{innerHTML:car.make},tr);
+				domConstruct.create('td',{innerHTML:car.price},tr);
+				domConstruct.create('td',{innerHTML:car.color},tr);
+			}
+		}
+
+		function handleError(err) {
+			console.log("Error in communication.........");
+		}
+	});
+
+</script>
+</head>
+<body>
+	<a id='link0' href=#>Load Cars</a> 
+	<div id='div0'>
+	</div>
+</body>
+</html>

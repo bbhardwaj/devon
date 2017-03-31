@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	//Developer 1 writing module for reusability
+	define('cal',[],function(){
+
+		var obj = {add:sum,subtract:diff};
+
+		function sum(a,b){
+			console.log(a+b);
+		}
+
+		function diff(a,b){
+			console.log(a-b);
+		}
+
+		return obj;		
+	});
+	
+
+	//Developer 2 loading module
+	require(['cal'],function(cal){
+
+		cal.add(10,5);
+		cal.subtract(10,5);
+	});
+
+</script>
+</head>
+<body>
+</body>
+</html>

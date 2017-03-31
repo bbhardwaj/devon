@@ -1,0 +1,48 @@
+<html>
+<head>
+<script type="text/javascript" src="./js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	var sub1;
+	
+	require(["dojo/topic","dojo/on","dojo/query","dojo/dom","dojo/domReady!"],
+	
+	function (topic,on,query,dom){
+			
+		topic.subscribe("POLITICS",updateChart);
+		sub1=topic.subscribe("POLITICS",updateDatabase);
+		topic.subscribe("POLITICS",updateFile);
+		
+		on(dom.byId('btn0'),'click',function(){
+				
+			topic.publish("POLITICS",['Politics is good business.']);
+		
+		});	
+			
+	});
+
+	//Chart Manager Component
+	function updateChart(info){
+		console.log("Chart is updated with : "+info);
+	}
+	
+	//Database Manager Component
+	function updateDatabase(info){
+		console.log("Database is updated with : "+info);
+		sub1.remove();
+	}
+
+	//File Manager Component
+	function updateFile(info){
+		console.log("File is updated with : "+info);
+	}
+
+</script>
+</head>
+<body>
+	
+	<button id='btn0'>Update Table</button>
+	
+</body>
+</html>

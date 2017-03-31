@@ -1,0 +1,78 @@
+<html>
+<head>
+<style type="text/css">
+
+	.r { background-color:red}
+	.g { background-color:green}
+	.b { background-color:blue}
+	.y { background-color:yellow}
+
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/dom-style","dojo/dom-class","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+	
+ 	 function(domStyle,domClass,domConstruct,on,query,dom){
+		
+		var colors=['r','g','b','y'];
+	
+		on(dom.byId("link0"),'click',function(){
+			query("h2").forEach(function(nd){
+				domClass.add(nd,randomColor());
+			});
+			
+		});
+
+		on(dom.byId("link1"),'click',function(){
+			query("h2").forEach(function(nd){
+				domClass.remove(nd,'r g b y');
+			});
+		});
+
+		on(dom.byId("link2"),'click',function(){
+			query("h2").forEach(function(nd){
+				domClass.toggle(nd,'y');
+			});
+		});
+
+		on(dom.byId("link3"),'click',function(){
+			var nd=dom.byId('para0');
+			domStyle.set(nd,'color','yellow');			
+			domStyle.set(nd,'background-color','black');			
+			domStyle.set(nd,'width',200);			
+			domStyle.set(nd,'font-size','28px');
+			domStyle.set(nd,'border','dashed 5 red');			
+			
+		});
+		
+		function randomColor(){
+			var idx=Math.floor(Math.random()*colors.length);
+			return colors[idx];
+		}
+			
+	});
+	
+</script>
+</head>
+<body>
+<center>
+	<p id='para0'>I am a fancy and dancing paragraph.</p>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+
+	<a href=# id='link0'>Change</a>
+	<a href=# id='link1'>Revert</a>
+	<a href=# id='link2'>Toggle</a>
+	<a href=# id='link3'>Fancy Me</a>
+</center>		
+</body>
+</html>

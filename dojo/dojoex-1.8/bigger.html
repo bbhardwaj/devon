@@ -1,0 +1,46 @@
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="./js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/fx/easing","dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-prop","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-traverse","dojo/NodeList-manipulate"],
+	
+	   function(easing,fx,baseFx,domStyle,domClass,domProp,domConstruct,on,query,dom){
+	
+		on(dom.byId("div0"),"click",function(){
+			baseFx.animateProperty({
+				node:'div0',
+				duration:8000,
+				easing:easing.bounceOut,
+				onEnd:doStuff,
+				properties:{
+						width:400,
+						height:400,
+						backgroundColor:'red'
+					}
+			}).play();	
+		});
+
+		function doStuff(){
+			baseFx.animateProperty({
+				node:'div0',
+				duration:8000,
+				easing:easing.bounceIn,
+				properties:{
+						width:100,
+						height:100,
+						backgroundColor:'green'
+					}
+			}).play();	
+		}
+	});
+		
+</script>
+</head>
+<body>
+	<div id='div0' style="background-color:blue;color:white;font-weight:bold;width:100;height:100">Small Box</div>
+</body>
+</html>

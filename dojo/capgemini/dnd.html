@@ -1,0 +1,41 @@
+<html>
+  <head>
+
+   <script type="text/javascript" src="./js/dojo/dojo.js" djConfig="parseOnLoad: true">
+    </script>
+
+    <script type="text/javascript"> 
+        dojo.require("dojo.dnd.Source");
+        dojo.require("dojo.parser");   
+    </script>
+  </head>
+<body>
+
+  <h1>Drag and Drop</h1>
+  <table border="1" cellpadding="0" cellspacing="0">
+    <tr>
+      <td valign="top">
+          <div dojoType="dojo.dnd.Source" jsId="sourceData" class="source">
+              <b style="background-color:#999999 ">Items</b>
+              <div class="dojoDndItem" dndType="Chicken">
+                  <div>Chicken</div>
+              </div>
+              <div class="dojoDndItem" dndType="Mutton">
+                  <div>Mutton</div>
+              </div>
+              <div class="dojoDndItem" dndType="Egg">
+                  <div>Egg</div>
+              </div>
+          </div>
+        </td>
+      <td valign="top">
+        <div dojoType="dojo.dnd.Target" jsId="targetData" class="target" 
+				accept="Chicken,Mutton,Egg">
+            <b style="background-color:#999999; ">Tandoor</b>
+        </div>
+      </td>
+    </tr>	
+  </table>
+
+</body>
+</html> 

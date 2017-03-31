@@ -1,0 +1,10 @@
+{
+	"identifier":"vin",
+	"items":[
+				{"vin":100,"model":"A4","make":"Audi","price":4500000.00,"qty":5,"color":"Black"},
+				{"vin":200,"model":"N3","make":"Nano","price":100000.00,"qty":15,"color":"Yellow"},
+				{"vin":300,"model":"X6","make":"BMW","price":5500000.00,"qty":25,"color":"White"},
+				{"vin":400,"model":"SLS500","make":"Mers","price":14500000.00,"qty":15,"color":"Red"},
+				{"vin":500,"model":"A4","make":"Bentley","price":24500000.00,"qty":5,"color":"Black"}
+			]
+}

@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style type="text/css">
+	@import "./js/dojo/resources/dojo.css";
+	@import "./js/dijit/themes/soria/soria.css";
+</style>
+<script src="./js/dojo/dojo.js">
+</script>
+
+<script>
+
+	require([
+		"dojox/charting/DataChart",
+		"dojo/store/JsonRest",
+		"dojo/data/ObjectStore",		
+		"dojo/domReady!"],
+
+		function(DataChart,JsonRest,ObjectStore){
+			var store = new ObjectStore({objectStore:new JsonRest({target:"stock.json"})});
+			var cols = new DataChart("cols", {
+				displayRange:8,
+				scroll:false,
+				xaxis:{labelFunc:"seriesLabels"},
+				type: dojox.charting.plot2d.Columns
+			});
+			cols.setStore(store, {symbol:"*"}, "price");
+	});
+</script>
+		
+<style>
+	#charts{
+		clear:both;
+		margin-bottom:50px;
+	}
+	#charts span{
+		padding:0 10px;
+		display:block;
+		font-size:10px;
+	}
+	.cols{
+		float:left;
+		border:1px solid #ccc;
+	}
+	 .cols, #cols{
+		width:200px;
+		height:200px;
+	}
+	.lines, .linesC, .cols, .bars, .pie{
+		height:250px;
+		margin:3px;
+	}
+	.cols, #cols{
+		width:280px;
+	}
+	.linesC, #linesC{
+		width:260px;
+	}
+	.lines, #lines,.bars, #bars{
+		width:260px;
+	}
+</style>
+</head>
+
+	<body class="soria">
+
+                <div id="charts">
+	
+                    <div class="cols">
+                            <div id="cols"></div>
+                    </div>
+
+                </div>
+	
+	</body>
+</html> 

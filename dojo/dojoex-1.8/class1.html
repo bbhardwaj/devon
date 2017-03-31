@@ -1,0 +1,53 @@
+<html>
+<head>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/_base/declare","dojo/parser","dojo/ready"],function(declare,parser,ready){
+
+		declare("ibm.bpm.service.Employee",null,{
+				id:100,
+				name:'Lalu',
+				salary:2400,
+				/*constructor:function(id,name,salary){
+					console.log('Inside constructor');
+					if(id!=undefined)
+						this.id=id;
+					this.name=name;
+					this.salary=salary;
+					
+				},*/
+				constructor:function(args){
+					console.log('Inside constructor');
+					declare.safeMixin(this,args);
+					//this.id=args.id;
+					//this.name=args.name;
+					//this.salary=args.salary;
+				},
+				display:function(){
+					console.log('ID: '+this.id);
+					console.log('Name: '+this.name);
+					console.log('Salary: '+this.salary);
+				}
+		});
+		
+		ready(function(){
+			parser.parse();
+			
+			var e1=new ibm.bpm.service.Employee({id:400,name:'Sohan',salary:30000});
+			var e2=new ibm.bpm.service.Employee({id:500,salary:40000});
+			e1.display();
+			e2.display();
+			
+		});
+		
+	
+	});
+
+</script>
+</head>
+<body>
+	<div data-dojo-type="Employee"></div>
+</body>
+</html>

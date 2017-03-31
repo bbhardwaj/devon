@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require([
+		'dojox/store/LocalDB',
+		'dojo/query',
+		'dojo/dom',
+		'dojo/request',
+		'dojo/on',
+		'dojo/domReady!',
+		'dojo/NodeList-manipulate'],
+
+	  function (LocalDB,query,dom,request,on){
+
+
+		request.get("cars.json",{handleAs:'json'})
+	
+			.then(function(cars){
+				var store = new LocalDB({data:cars,idProperty:'vin'});
+
+				var arr = store.query({"color":"Black"});				
+		
+				arr.forEach(function(car){
+					query("#div0").append("<h1>"+car.model+"</h1>");
+				});	
+			
+			});
+		
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'>
+	</div>
+</body>
+</html>

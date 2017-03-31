@@ -1,0 +1,69 @@
+<html>
+<head>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/_base/declare","dojo/parser","dojo/ready"],function(declare,parser,ready){
+
+		declare("Car",null,{
+			make:'Tata',
+			color:'Yellow',
+			price:2300000.00,
+			doors:4,
+			constructor:function(args){
+				console.log('Inside Car constructor');
+				declare.safeMixin(this,args);
+			},
+			display:function(){
+				console.log('Make : '+this.make);
+				console.log('Color : '+this.color);
+				console.log('Price : '+this.price);
+				console.log('Doors : '+this.doors);
+			}
+		});
+		
+		declare("Features",null,{
+			origin:'Indian',
+			milage:24,
+			unique:function(){
+				console.log('Maximum available colors!');
+				console.log('Smallest & cheapest car in the world!');
+				console.log('Battery is located under driver seat!');
+			}
+		});
+		
+		declare("Nano",[Car,Features],{
+			doors:6,
+			length:5,
+			constructor:function(){
+				console.log('Inside Nano constructor');
+			},
+			display:function(){
+				this.inherited(arguments);
+				console.log('Length : '+this.length);
+			}
+
+		});
+		
+	
+		ready(function(){
+			//parser.parse();
+			
+			var c1=new Car({color:'Black'});
+			c1.display();
+
+			var c2=new Nano({price:100000.00,length:8});
+			c2.display();
+			c2.unique();
+
+		});
+		
+	
+	});
+
+</script>
+</head>
+<body>
+</body>
+</html>

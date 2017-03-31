@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='./js/dijit/themes/soria/soria.css' />
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dijit/registry','dojo/dom','dojo/parser','dojo/domReady!'],
+	    function(registry,dom,parser){
+		parser.parse();		
+
+	});
+
+</script>
+</head>
+<body class='soria'>
+<table style='width:400px;margin:auto'>
+<tbody>
+	<tr>
+		<td>
+			<label for='uid'>User ID : </label>
+		</td>
+		<td>
+			<input type=text value=jaggu123 id='uid' name='uid' data-dojo-type='dijit/form/TextBox' data-dojo-props="" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for='uname'>Name : </label>
+		</td>
+		<td>
+			<input type=text value=Jaggu id='uname' name='uname' data-dojo-type='dijit/form/ValidationTextBox' data-dojo-props="missingMessage:'Name is required!!!',required:true" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for='uage'>Age : </label>
+		</td>
+		<td>
+			<input type=text value=35 id='uage' name='uage' data-dojo-type='dijit/form/NumberTextBox' data-dojo-props="rangeMessage:'Age should be between 30 and 50 only!!!!',constraints:{min:30,max:50},invalidMessage:'Age should be in numbers only!!!!',missingMessage:'Age is required!!!',required:true" />
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<label for='udob'>DOB : </label>
+		</td>
+		<td>
+			<input type=text value=Jaggu id='udob' name='udob' data-dojo-type='dijit/form/DateTextBox' data-dojo-props="constraints:{max:new Date(),datePattern:'dd-MM-yyyy'},missingMessage:'DOB is required!!!',required:true" />
+		</td>
+	</tr>
+</tbody>
+</table>
+</body>
+</html>

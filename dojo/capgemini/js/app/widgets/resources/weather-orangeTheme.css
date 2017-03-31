@@ -1,0 +1,19 @@
+.weather { 	
+	background-color:rgb(255,165,0); 
+	width:450px;
+	border:5px solid orange;
+	border-radius:10px;
+	text-align:center;
+	color:white;
+	margin-bottom:10px;
+}
+
+.weather button { 	
+	background-color:rgb(255,165,0); 
+	color:white;
+	width:70%;
+	border-radius:20px;
+	outline:none;
+	line-height:1.4em;
+	margin-bottom:10px;
+}

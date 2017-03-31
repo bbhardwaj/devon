@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require([
+		'dojo/store/Memory',
+		'dojo/query',
+		'dojo/dom',
+		'dojo/request',
+		'dojo/on',
+		'dojo/domReady!',
+		'dojo/NodeList-manipulate'],
+
+	  function (Memory,query,dom,request,on){
+		
+		var cars = [
+			{"vin":1000,"model":"X5","make":"BMW","price":2300000.00,"color":"Black"},
+			{"vin":1001,"model":"A5","make":"Audi","price":2670000.00,"color":"White"},
+			{"vin":1002,"model":"Q7","make":"Audi","price":8900000.00,"color":"Yellow"},
+			{"vin":1003,"model":"A1","make":"BMW","price":900000.00,"color":"Black"},
+			{"vin":1004,"model":"X1","make":"BMW","price":3900000.00,"color":"Red"}
+		];
+
+		var store = new Memory({idProperty:'vin',data:cars});
+		
+		//var arr = store.query({"color":"Black"});				
+		
+		var arr = store.query({"color":"Black"});				
+		
+		arr.forEach(function(car){
+			query("#div0").append("<h1>"+car.model+"</h1>");
+		});	
+
+		var car = store.get(1004);				
+		query("#div0").append("<h1>"+car.model+"</h1>");
+
+		store.add({"vin":1005,"model":"X2","make":"BMW","price":9900000.00,"color":"Red"});				
+
+		var car = store.get(1005);				
+		query("#div0").append("<h1>"+car.model+"</h1>");
+		
+		store.remove(1001);				
+		
+		var car = store.get(1003);				
+		query("#div0").append("<h1>"+car.model+"</h1>");
+		
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'>
+	</div>
+</body>
+</html>

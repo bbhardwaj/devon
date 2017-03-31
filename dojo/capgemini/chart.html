@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+	<style type="text/css">
+			@import "./js/dojo/resources/dojo.css";
+			@import "./js/dijit/themes/soria/soria.css";
+	</style>
+
+	<script type="text/javascript" src="./js/dojo/dojo.js" djConfig="parseOnLoad: true">
+    </script>
+
+		<script type="text/javascript">
+
+		dojo.require("dojox.charting.DataChart");
+		dojo.require("dojo.data.ItemFileWriteStore");
+	
+		var store = new dojo.data.ItemFileWriteStore({ url : "stock.json" });
+
+
+		function makeCharts(){
+
+				var cols = new dojox.charting.DataChart("cols", {
+				displayRange:8,
+				scroll:false,
+				xaxis:{labelFunc:"seriesLabels"},
+				type: dojox.charting.plot2d.Columns
+			});
+			cols.setStore(store, {symbol:"*"}, "price");
+	
+		};
+
+
+		dojo.addOnLoad(function(){
+			makeCharts();
+		});
+					
+		</script>
+		
+<style>
+	#charts{
+		clear:both;
+		margin-bottom:50px;
+	}
+	#charts span{
+		padding:0 10px;
+		display:block;
+		font-size:10px;
+	}
+	.cols{
+		float:left;
+		border:1px solid #ccc;
+	}
+	 .cols, #cols{
+		width:200px;
+		height:200px;
+	}
+	.lines, .linesC, .cols, .bars, .pie{
+		height:250px;
+		margin:3px;
+	}
+	.cols, #cols{
+		width:280px;
+	}
+	.linesC, #linesC{
+		width:260px;
+	}
+	.lines, #lines,.bars, #bars{
+		width:260px;
+	}
+</style>
+</head>
+
+	<body class="soria">
+
+                <div id="charts">
+	
+                    <div class="cols">
+                            <div id="cols"></div>
+                    </div>
+
+                </div>
+	
+	</body>
+</html> 

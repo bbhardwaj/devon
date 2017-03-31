@@ -1,0 +1,52 @@
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/dom-form","dojo/request","dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+	
+ 	 function(domForm,request,fx,baseFx,domStyle,domClass,domConstruct,on,query,dom){
+	
+		on(dom.byId("btn0"),'click',function(){
+			//var v1=query("#f").val();
+			//var v2=query("#s").val();
+			//request.get("cal.jsp",{query:{f:v1,s:v2}}).then(
+			//request.post("cal.jsp",{query:{f:v1,s:v2}}).then(
+			//request.post("cal.jsp",{data:{f:v1,s:v2}}).then(
+			//var val=domForm.toObject("calForm");
+			//request.post("cal.jsp",{data:val}).then(
+			var val=domForm.toObject('calForm');
+			//alert(val);
+			request.get("cal.jsp",{query:val}).then(
+				function(data){
+					query("#resultDiv").text('Result : '+data);
+				},
+				function(err){
+					query("#resultDiv").text(err.message);
+				}
+			);
+		});
+			
+	});
+	
+</script>
+</head>
+<body>
+<center>
+
+<form id='calForm'>
+
+Enter Number:<input id='f' name=f type=text value=10 /><br>
+Enter Number:<input id='s' name=s type=text value=10 /><br>
+			<input id='btn0' type=button value=SUM />
+			<br><br>
+</form>
+			
+		<div id='resultDiv'>
+		</div>
+</center>		
+</body>
+</html>

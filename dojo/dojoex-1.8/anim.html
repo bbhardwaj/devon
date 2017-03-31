@@ -1,0 +1,70 @@
+<html>
+<head>
+<style type="text/css">
+
+	.r { background-color:red}
+	.g { background-color:green}
+	.b { background-color:blue}
+	.y { background-color:yellow}
+
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+	
+ 	 function(fx,baseFx,domStyle,domClass,domConstruct,on,query,dom){
+		
+		var colors=['r','g','b','y'];
+	
+		on(dom.byId("link0"),'click',function(){
+			query("h2").forEach(function(nd){
+				domClass.add(nd,randomColor());
+			});
+			query("h2.r").forEach(function(nd){
+				fx.wipeOut({node:nd,duration:4000}).play();
+				//baseFx.fadeOut({node:nd,duration:4000}).play();
+			});
+			
+		});
+
+		on(dom.byId("link1"),'click',function(){
+
+			query("h2.r").forEach(function(nd){
+				fx.wipeIn({node:nd,duration:2000}).play();
+				//baseFx.fadeIn({node:nd}).play();
+			});
+
+			query("h2").forEach(function(nd){
+				domClass.remove(nd,'r g b y');
+			});
+		});
+
+	
+		function randomColor(){
+			var idx=Math.floor(Math.random()*colors.length);
+			return colors[idx];
+		}
+			
+	});
+	
+</script>
+</head>
+<body>
+<center>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+	<h2>Delhi Pune Hyderabad Mumbai GOA</h2>
+
+	<a href=# id='link0'>Change</a>
+	<a href=# id='link1'>Revert</a>
+</center>		
+</body>
+</html>

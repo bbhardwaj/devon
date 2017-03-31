@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	//Async Module Loader
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on'],doWork);
+
+	function doWork(a,b,c,d){
+
+		var nd = b.byId('div0');
+		alert(nd);
+		//20 loc
+		console.log("All modules loaded successfully!!!!");
+	}
+	
+
+	var i =10;
+	document.write(i);
+	document.write("<br>");
+
+	document.write(dojo);
+	document.write("<br>");
+
+</script>
+</head>
+<body>
+	<div id='div0'>OK</div>
+</body>
+</html>

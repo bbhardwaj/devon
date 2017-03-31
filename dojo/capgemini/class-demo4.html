@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require(['dojo/_base/declare'],function (declare){
+
+		declare('Employee',null,{
+			id:100,
+			name:'Jaggu',
+			salary:560000.00,
+			dob:new Date(),
+			constructor:function(args){
+				declare.safeMixin(this, args);
+				console.info('Employee constructor called!!!'); 
+			},
+			info:function(){ 
+				console.warn('Employee informantion is displayed!!!'); 
+				console.info('ID : '+this.id); 
+				console.info('Name : '+this.name); 
+				console.info('Salary : '+this.salary); 
+				console.info('DOB : '+this.dob); 
+			},
+			updateSalary:function(){ 
+				this.salary = this.salary + (this.salary * .80); 
+				console.info('Salary is updated!!!'); 
+			}
+		});
+		
+		var e1 = new Employee({id:10,name:'Ghanshu',salary:170000.00});		
+		var e2 = new Employee({id:20,name:'Billu',salary:180000.00});		
+		var e3 = new Employee({id:20,name:'Chandu'});		
+		var e4 = new Employee({id:30});		
+
+		e1.info();
+		e2.info();
+		e3.info();
+		e4.info();
+	
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

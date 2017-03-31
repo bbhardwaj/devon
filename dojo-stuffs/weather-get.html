@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!','dojo/NodeList-manipulate'],function (query,dom,request,on){
+		
+		//on(dom.byId('link0'),'click',function (){
+
+		query('#choice0').on('change',function(){
+	
+			//request.get("weather.jsp")
+			//request.get("weather.jsp?city=Pune")
+			//request.get("weather.jsp",{query:'city=Dhili&day=12'})
+			//var parms = {city:'Mumbai',day:14,month:10};
+			var parms = {city:query('#choice0').val()};
+			request.get("weather.jsp",{query:parms})
+				.then(function (content) {
+					query('#div0').text(content);
+				});
+		});
+	});
+
+</script>
+</head>
+<body>
+	Choose City : 
+	<select id='choice0'>
+		<option value=''>--Select--</option>
+		<option value=Delhi>Delhi</option>
+		<option value=Pune>Pune</option>
+		<option value=Mumbai>Mumbai</option>
+		<option value=Banglore>Banglore</option>
+	</select>
+	<a id='link0' href=#>Show Weather</a> 
+	<div id='div0'>
+	</div>
+</body>
+</html>

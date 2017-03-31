@@ -1,0 +1,36 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/claro/claro.css";
+	@import "js/dojox/widget/ColorPicker/ColorPicker.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	
+	require(["dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!"],
+	
+	  function(registry,dom,query,parser){
+			parser.parse();
+			
+	});
+
+	function doWork(val){
+		document.body.style.backgroundColor=val;
+	}
+	
+</script>
+</head>
+<body class="claro">
+
+	<div data-dojo-type="dijit/ColorPalette" palette='3x4' onChange=doWork>
+	</div>
+
+	<div data-dojo-type="dojox/widget/ColorPicker" onChange=doWork>
+	</div>
+
+</body>
+</html>

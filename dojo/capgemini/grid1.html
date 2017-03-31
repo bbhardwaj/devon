@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='./js/dijit/themes/soria/soria.css' />
+<link rel='stylesheet' href='./js/dojox/grid/resources/soriaGrid.css' />
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/data/ObjectStore','dojo/store/Memory','dojox/grid/DataGrid','dojo/on','dijit/registry','dojo/dom','dojo/parser','dojo/domReady!'],
+	    function(ObjectStore,Memory,DataGrid,on,registry,dom,parser){
+		parser.parse();
+
+		var cars = [
+			{"vin":1000,"model":"X5","make":"BMW","price":2300000.00,"color":"Black"},
+			{"vin":1001,"model":"A5","make":"Audi","price":2670000.00,"color":"White"},
+			{"vin":1002,"model":"Q7","make":"Audi","price":8900000.00,"color":"Yellow"},
+			{"vin":1003,"model":"A1","make":"BMW","price":900000.00,"color":"Black"},
+			{"vin":1004,"model":"X1","make":"BMW","price":3900000.00,"color":"Red"}
+		];
+
+		var carMemoryStore = new Memory({idProperty:'vin',data:cars});
+		var carStore = new ObjectStore({objectStore:carMemoryStore});
+
+		var grid = new DataGrid({
+				store:carStore,
+				query:{vin:'*'},
+				structure:[  
+					  {name:'VIN',field:'vin'},
+					  {name:'Name',field:'model'},
+					  {name:'Company',field:'make'},
+					  {name:'Price',field:'price'},
+					  {name:'Color',field:'color'}
+				]
+		},'grid0');
+
+				
+		//grid.placeAt('grid0');
+		grid.startup();
+	});
+
+	
+</script>
+</head>
+<body class='soria'>
+	<div id='grid0'>
+	</div>	
+</body>
+</html>

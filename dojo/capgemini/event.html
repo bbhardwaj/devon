@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!'],function (query,dom,request,on){
+		
+		//var arr = query('input');		
+		//var arr = query('#btn0');		
+		//var nd = arr[0];
+		//var nd = dom.byId('btn0');
+
+		var han = on(dom.byId('btn0'),'click',function (){
+			console.log("Button clicked!!!!!!");
+		});
+		
+		on(dom.byId('btn1'),'click',function (){
+			han.remove();
+			console.log("Remove Button clicked!!!!!!");
+		});
+		
+		on.once(dom.byId('btn2'),'click',function (){
+			console.log("Password changed successfully!!!");
+		});
+
+		on(dom.byId('div0'),'click',function (){
+			console.log("Div clicked!!!!!!");
+		});
+
+		on(dom.byId('div0'),'mouseover',function (){
+			console.log("Div mouseover!!!!!!");
+		});
+
+		on(dom.byId('div0'),'mouseenter',function (){
+			console.log("Div mouseenter!!!!!!");
+		});
+
+		on(dom.byId('div0'),'mouseout',function (){
+			console.log("Div mouseout!!!!!!");
+		});
+	});
+
+	
+
+</script>
+</head>
+<body>
+	<input id='btn0' type=button value=OK /> 
+	<input id='btn1' type=button value=Remove /> 
+	<input id='btn2' type=button value='Change Password' /> 
+	<div style="background-color:gray;width:200px;height:200px" id='div0'>
+		I am a div.
+	</div>
+
+</body>
+</html>

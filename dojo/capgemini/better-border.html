@@ -1,0 +1,121 @@
+<html>
+<head>
+<style type="text/css">
+	@import "js/dijit/themes/claro/claro.css";
+</style>
+<style type="text/css">
+	
+	a { text-decoration:none;background-color:white;color:black }
+	a:hover{ background-color:#61a1cc }
+
+</style>
+
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/request","dojo/query","dijit/registry","dojo/dom","dojo/parser","dojo/domReady!","dojo/NodeList-manipulate"],function(request,query,registry,dom,parser){
+		parser.parse();
+		
+		query("#about").on('click',function(){
+			var pr=request.get("about.jsp");
+			pr.then(
+				function(data){
+					query("#contentDiv").html(data);
+					console.log("Hurryyyyy...");
+				},
+				function(err){
+					query("#contentDiv").html(err.message);
+					console.log("Not Hurryyyyy...");
+				}
+			);
+		});
+
+		query("#friends").on('click',function(){
+			var pr=request.get("friends.jsp");
+			pr.then(
+				function(data){
+					query("#contentDiv").html(data);
+				},
+				function(err){
+					query("#contentDiv").html(err.message);
+				}
+			);
+		});
+		
+		var counter=1;
+		
+		window.setInterval(slideShow,2000);
+		
+		function slideShow(){
+			var nd=dom.byId('img0');
+			nd.src='images/adv'+counter+'.jpg';
+			counter++;
+			if(counter==6)
+				counter=1;
+		}
+		
+	});
+	
+
+</script>
+
+</head>
+<body class="claro">
+	
+	<div style="width:100%;height:100%" data-dojo-type="dijit/layout/BorderContainer">
+
+		<div style="background-color:rgb(0,150,200);color:white"  data-dojo-type="dijit/layout/ContentPane" region='bottom'>
+			<div align=center style="height:10">
+				<p><em>Capgemini is trademark &copy; of Capgemini Corp, USA!</em></p>
+			</div>
+		</div>
+		<div style="background-color:rgb(0,150,200);color:white" data-dojo-type="dijit/layout/ContentPane" region='top'>
+			<div align=center style="font-size:24px;font-weight:bold;height:30">
+				<p>Capgemini Corp</p>
+			</div>
+		</div>
+		<div style="background-color:rgb(0,150,200);color:white;width:100" data-dojo-type="dijit/layout/ContentPane" region='left'>
+	
+			<div data-dojo-type="dijit/layout/AccordionContainer">
+				
+				<div data-dojo-type="dijit/layout/ContentPane" title='Company'>
+					<div data-dojo-type="dijit/Menu">
+							<div id='about' data-dojo-type="dijit/MenuItem" label='About'></div>
+							<div data-dojo-type="dijit/MenuItem" label='Contact'></div>
+							<div data-dojo-type="dijit/MenuItem" label='Services'></div>
+							<div data-dojo-type="dijit/MenuItem" label='Partners'></div>
+					</div>
+	
+				</div>
+				<div data-dojo-type="dijit/layout/ContentPane" title='Personal'>
+					<table>
+						<tr><td><a href=#>Address Book</a></td></tr>
+						<tr><td><a href=#>Phone Book</a></td></tr>
+						<tr><td><a href=# id='friends'>Friends</a></td></tr>
+						<tr><td><a href=#>Family</a></td></tr>
+					</table>
+				</div>
+				<div data-dojo-type="dijit/layout/ContentPane" title='Options'>
+					<div data-dojo-type="dijit/form/Button" label='Mail'></div>
+					<div data-dojo-type="dijit/form/Button" label='Database'></div>
+					<div data-dojo-type="dijit/form/Button" label='Account'></div>
+					<div data-dojo-type="dijit/form/Button" label='Lock'></div>
+
+				</div>
+	
+			</div>
+	
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" region='right'>
+			<img id='img0' src='images/adv5.jpg' />
+		</div>
+		
+		<div id='contentDiv' data-dojo-type="dijit/layout/ContentPane" region='center' href='tabs.html'>
+			Content goes here......
+		</div>
+
+	</div>
+
+</body>
+</html>

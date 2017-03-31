@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	@import "./js/app/widgets/resources/weather-orangeTheme.css";
+
+</style>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require([
+		'app/widgets/Weather',
+		'dojo/parser',
+		'dojo/domReady!'],
+	   function (Weather,parser){
+
+		parser.parse();
+		
+		var weather = new Weather({city:'Delhi',minTemp:35,maxTemp:52},'div0');
+		weather.startup();
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'></div>
+	<div id='div1' data-dojo-type='app/widgets/Weather' data-dojo-props="city:'Chennai',minTemp:35,maxTemp:62"></div>
+</body>
+</html>

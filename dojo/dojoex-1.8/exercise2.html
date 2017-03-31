@@ -1,0 +1,27 @@
+<html>
+<head>
+<style type='text/css'>
+	@import "js/dijit/themes/soria/soria.css";
+	@import "js/ibm/bpm/widget/resources/pinkCar.css";
+</style>
+
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/parser","dojo/ready"],function(parser,ready){
+
+		ready(function(){
+			parser.parse();
+		});
+		
+	
+	});
+
+</script>
+</head>
+<body class='soria'>
+	<div data-dojo-type="dijit/form/Button" data-dojo-props="label:'Save'"></div>
+	<div data-dojo-type="ibm/bpm/widget/Car"></div>
+</body>
+</html>

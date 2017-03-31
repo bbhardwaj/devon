@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['app/cal','app/Circle','dojo/domReady!'],function(cal,Circle){
+
+		console.log(cal.title);
+		console.log(cal.currentTime);
+
+		cal.add(10,5);
+		cal.subtract(10,5);
+
+		var c1 = new Circle();
+		console.log(c1.radius);
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'></div>
+</body>
+</html>

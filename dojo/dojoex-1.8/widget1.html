@@ -1,0 +1,50 @@
+<html>
+<head>
+<style type='text/css'>
+
+	.addressBook { border:5 solid red;}
+
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dijit/registry","dojo/on","dojo/dom-construct","dijit/_WidgetBase","dojo/_base/declare","dojo/parser","dojo/ready"],
+	
+	function(registry,on,domConstruct,_WidgetBase,declare,parser,ready){
+
+		declare("AddressBook",[_WidgetBase],{
+			name:'Laden',
+			location:'Pakistan',
+			baseClass:'addressBook',
+			
+			constructor:function(){
+				console.log("In AddressBook.constructor()");
+			},
+			buildRendering:function(){
+				//this.domNode=domConstruct.create('span');
+				//domConstruct.place(domConstruct.create('p'),this.domNode);
+				this.domNode=domConstruct.toDom("<span><p>Name : <b>"+this.name+"</b></p><p>Location : <b>"+this.location+"</b></p></span>");
+			},
+			postCreate:function(){
+				on(this.domNode,'click',function(){
+					console.log('Book clicked!');
+				});
+			}
+	
+		});
+		
+		ready(function(){
+			parser.parse();
+			console.log(registry.byId('address0').get('name'));
+			registry.byId('address0').set('name','Dawood');
+			console.log(registry.byId('address0').get('name'));
+		});
+	});
+
+</script>
+</head>
+<body>
+	<div id='address0' data-dojo-type="AddressBook"></div>
+</body>
+</html>

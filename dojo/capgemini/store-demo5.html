@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require([
+		'dojo/store/Memory',
+		'dojo/query',
+		'dojo/dom',
+		'dojo/request',
+		'dojo/on',
+		'dojo/domReady!',
+		'dojo/NodeList-manipulate'],
+
+	  function (Memory,query,dom,request,on){
+
+		var store = new Memory({idProperty:'vin'});
+
+		window.setInterval(loadData,4000);	
+		
+		function loadData(){
+
+			request.get("cars.jsp",{handleAs:'json'})
+				
+				.then(function(cars){
+					console.log(cars);
+					store.setData(cars);
+
+					var arr = store.query({"color":"Black"});				
+				
+					query("#div0").text('');
+			
+					arr.forEach(function(car){
+						query("#div0").append("<h1>"+car.name+"</h1>");
+					});	
+				
+				});
+		}
+		
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'>
+	</div>
+</body>
+</html>

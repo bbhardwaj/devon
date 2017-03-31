@@ -1,0 +1,55 @@
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/request","dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate","dojo/NodeList-fx"],
+	
+ 	 function(request,fx,baseFx,domStyle,domClass,domConstruct,on,query,dom){
+	
+		on(dom.byId("link0"),'click',function(){
+			request.get("products.json",{handleAs:'text'}).then(
+				function(data){
+					var arr=eval(data);
+					var table=domConstruct.create('table',{border:2,width:300});
+					domStyle.set(table,'background-color','gray');
+					domStyle.set(table,'border','solid 10 blue');
+					domStyle.set(table,'border-radius',30);
+					
+					domConstruct.place(table,dom.byId('resultDiv'));
+					var tbody=domConstruct.create('tbody');
+					domConstruct.place(tbody,table);
+					for(var i=0;i<arr.length;i++){
+						var p=arr[i];
+			
+						var tr=domConstruct.create('tr');
+						domConstruct.place(tr,tbody);
+
+						domConstruct.create('td',{innerHTML:p.pid},tr);
+						domConstruct.create('td',{innerHTML:p.name},tr);
+						domConstruct.create('td',{innerHTML:p.price},tr);
+						domConstruct.create('td',{innerHTML:p.qty},tr);
+						
+					}
+					
+					query("table tr:nth-child(even)").style('backgroundColor','white');	
+				}
+			);
+		});
+			
+	});
+	
+</script>
+</head>
+<body>
+<center>
+		<a href=# id='link0'>Load Product</a>
+		<br><br>
+		<div id='resultDiv'>
+		</div>
+</center>		
+</body>
+</html>

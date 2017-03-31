@@ -1,0 +1,50 @@
+<html>
+<head>
+<style type="text/css">
+	
+	@import "js/dijit/themes/claro/claro.css";
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!"],
+	
+	  function(registry,dom,query,parser){
+			parser.parse();
+			
+	});
+
+	
+</script>
+</head>
+<body class="claro">
+
+	<div style="width:100%;height:100%" data-dojo-type="dijit/layout/AccordionContainer">
+		<div data-dojo-type="dijit/layout/ContentPane" title='Politics'>
+			<h2>Politics is a good business.</h2>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" title='Entertainment' closable=true href='tab.html'>
+			<ul>
+				<li>Movies</li>
+				<li>Songs</li>
+				<li>Facebook</li>
+				<li>Mobile</li>
+				<li>Games</li>
+			</ul>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" title='Sports' selected=true>
+			<input type=checkbox value=Cricket data-dojo-type="dijit/form/CheckBox" />Cricket<br>
+			<input type=checkbox value=Football data-dojo-type="dijit/form/CheckBox" />Football<br>
+			<input type=checkbox value=Tennis data-dojo-type="dijit/form/CheckBox" />Tennis<br>
+			<input type=checkbox value=Kusti data-dojo-type="dijit/form/CheckBox" />Kusti<br>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" title='User' href='reg.html'>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" title='DOJO' href='dojo.jsp'>
+		</div>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require([
+		'dojo/dom-construct',
+		'dijit/_WidgetBase',
+		'dojo/_base/declare',
+		'dojo/domReady!'],
+	   function (domConstruct,_WidgetBase,declare){
+
+		declare('WeatherWidget',[_WidgetBase],{
+			
+			constructor:function(){
+				console.info("Inside WeatherWidget constructor!!!");
+			},
+
+			buildRendering:function(){
+				var nd = domConstruct.create('h1',{innerHTML:'Weather is very hot outside.'});
+				this.domNode = nd;
+			}
+		
+		});
+
+		var weather = new WeatherWidget(null,'div0');
+		//weather.placeAt('div0');
+		weather.startup();
+
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'></div>
+</body>
+</html>

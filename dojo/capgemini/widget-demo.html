@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+	@import "./js/app/widgets/resources/weather-orangeTheme.css";
+
+</style>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require([
+		'dojo/parser',
+		'dijit/registry',
+		'dojo/domReady!'],
+	   function (parser,registry){
+		parser.parse();
+
+		registry.byId('div0').set('city','Hyderabad');
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0' data-dojo-type='app/widgets/CoolWeather' data-dojo-props="city:'Chennai',minTemp:35,maxTemp:62"></div>
+</body>
+</html>

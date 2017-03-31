@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require([
+		'dojo/store/JsonRest',
+		'dojo/query',
+		'dojo/dom',
+		'dojo/request',
+		'dojo/on',
+		'dojo/domReady!',
+		'dojo/NodeList-manipulate'],
+
+	  function (JsonRest,query,dom,request,on){
+
+		var store = new JsonRest({idProperty:'vin',target:'cars.jsp'});
+		var arr = store.query({});				
+
+		arr.forEach(function(car){
+			query("#div0").append("<h1>"+car.name+"</h1>");
+		});	
+	
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0'>
+	</div>
+</body>
+</html>

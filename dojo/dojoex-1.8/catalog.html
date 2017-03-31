@@ -1,0 +1,59 @@
+<html>
+<head>
+<script type="text/javascript" src="./js/dojo/dojo.js">
+</script>
+
+<script type="text/javascript">
+
+	require(["dojo/request","dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-prop","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-traverse","dojo/NodeList-manipulate"],
+	
+	   function(request,fx,baseFx,domStyle,domClass,domProp,domConstruct,on,query,dom){
+	
+		query("a").on('click',function(){
+			
+			var pr=request.get("books.xml",{handleAs:'xml'});			
+			
+			pr.then(
+				function(data){
+					showUI(data);
+				}
+			);
+			
+		});
+		
+		function showUI(data){
+
+				var arr=data.getElementsByTagName('book');
+				for(var i=0;i<arr.length;i++){
+					var nd=arr[i];
+					var name=nd.childNodes[0].firstChild.nodeValue;
+					var title=nd.childNodes[1].firstChild.nodeValue;
+					var price=nd.childNodes[3].firstChild.nodeValue;
+
+					var ref1=document.createElement('p');
+					ref1.style.backgroundColor='gray';
+					ref1.style.width=300;
+					ref1.style.color='white';
+					ref1.style.border='10 solid red';
+
+					div0.appendChild(ref1);
+					var str="<b>Author :&nbsp;&nbsp;</b>"+name+"<br>";
+					str=str+"<b>Title :&nbsp;&nbsp;</b>"+title+"<br>";
+					str=str+"<b>Price :&nbsp;&nbsp;</b>"+price+"<br><br>";
+					ref1.innerHTML=str;
+				}		
+		}
+		
+	});
+
+</script>
+</head>
+<body>
+<a href=#>Load Products</a>
+<center>
+	<div id='div0'>
+		
+	</div>
+</center>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+	{
+		"ISBN": 100001,
+		"Title": "Mastering DOJO",
+		"Publisher": "O'Reiley",
+		"Pages": 340,
+		"Authors": "Alex",
+		"Year": 2012
+	},
+	{
+		"ISBN": 100002,
+		"Title": "Learn jQuery",
+		"Publisher": "Manning",
+		"Pages": 230,
+		"Authors": "Sweety",
+		"Year": 2010
+	},
+	{
+		"ISBN": 100003,
+		"Title": "Java Script Good Parts",
+		"Publisher": "O'Reiley",
+		"Pages": 170,
+		"Authors": "Dougles",
+		"Year": 2005
+	}
+]

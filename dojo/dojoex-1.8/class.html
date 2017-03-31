@@ -1,0 +1,52 @@
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/_base/declare"],function(declare){
+		
+
+		//declare(classname,parentclasses,{properties & methods });
+		
+		//declare("Employee",null,{name:'Lalu'});
+
+		var Employee=declare(null,{
+
+			name:'Lalu',
+			age:46,
+
+			constructor:function(args){
+				declare.safeMixin(this, args);
+				//this.name=args.name;
+				//this.age=args.age;
+			},
+
+			display:function(){
+				console.log("Name : "+this.name);
+				console.log("Age : "+this.age);
+			}
+		});
+	
+		//var e1=new Employee({name:'Rahul',age:25});
+		var e1=new Employee();
+		var e2=new Employee({name:'Raj',age:23});
+
+		e1.display();
+		e2.display();
+
+		//console.log(e1.name);
+		//console.log(e1.age);
+
+	});
+	
+
+	
+		
+</script>
+</head>
+<body>
+</body>
+</html>

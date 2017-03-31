@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>DT</title>
+</head>
+<body>
+	<h1 id="test"></h1>
+
+	<script>
+		dojoConfig ={
+			baseUrl: "js",
+			isDebug: true, // enables debug
+			async: true, // enables AMD loader
+			packages: [
+				{
+					"name": "dojo",
+					"location": "lib/dojo"
+				},
+				{
+					"name": "my",
+					"location": "myWidgets"
+				}
+			]
+		};
+	</script>
+	<script src="./js/lib/dojo/dojo.js">
+	</script>
+	<script>
+		require(["dojo/dom", "dojo/dom-attr","my/Circle"], function(dom, attr, Circle){
+			var circle= new Circle(100);
+			var result = "Circumference: " + circle.getCircumference() +"<br>Area: " + circle.getArea();
+			attr.set(dom.byId("test"), "innerHTML", result);
+		});
+	</script>
+</body>
+</html>

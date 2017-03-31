@@ -1,0 +1,72 @@
+<html>
+<head>
+<style type="text/css">
+	@import "js/dijit/themes/claro/claro.css";
+</style>
+<style type="text/css">
+	a { text-decoration:none }
+	a:hover { background-color:blue;color:white;font-size:1.2em}
+	
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	var counter=1;
+	require(["dojo/request","dijit/registry","dojo/dom","dojo/query","dojo/parser","dojo/domReady!","dojo/NodeList-manipulate"],
+	
+	  function(request,registry,dom,query,parser){
+			parser.parse();
+			
+		query("#about").on('click',function(){
+			
+			request.get("about.jsp").then(
+				function(data){
+					query('#contentDiv').html(data);
+				}
+			);
+		});	
+			
+		window.setInterval(slideShow,2000);
+		
+		function slideShow(){
+			query("#img0").attr('src','images/image'+counter+'.jpg');
+			counter++;
+			if(counter==5)
+				counter=1;
+		}
+			
+	});
+
+	
+</script>
+</head>
+<body class="claro">
+
+	<div style="width:100%;height:100%" data-dojo-type="dijit/layout/BorderContainer">
+	
+		<div style="text-align:center;height:20;color:white;background-color:rgb(0,150,200);font-size:14px;font-weight:bold" data-dojo-type="dijit/layout/ContentPane" region='bottom'>
+			<span><em>Capgemini is a &copy; trademark of Capgemini, France.</em></span>
+		</div>
+		<div style="text-align:center;height:40;color:white;background-color:rgb(0,150,200);font-size:28px;font-weight:bold" data-dojo-type="dijit/layout/ContentPane" region='top'>
+			<span>Capgemini</span>
+		</div>
+		<div  data-dojo-type="dijit/layout/ContentPane" region='left'>
+			<table>
+				<tr><td><a href=#>Services</a></td></tr>
+				<tr><td><a href=#>Products</a></td></tr>
+				<tr><td><a href=#>Partners</a></td></tr>
+				<tr><td><a href=#>Contact</a></td></tr>
+				<tr><td><a href=# id='about'>About</a></td></tr>
+			</table>
+		</div>
+		<div data-dojo-type="dijit/layout/ContentPane" region='right'>
+			<img id='img0' src='images/image4.jpg' />
+		</div>
+		<div id='contentDiv' data-dojo-type="dijit/layout/ContentPane" region='center' href='accordion.html'>
+			Content goes here......
+		</div>
+
+	</div>
+
+</body>
+</html>

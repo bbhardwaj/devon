@@ -1,0 +1,42 @@
+<html>
+<head>
+<style type='text/css'>
+
+	.carWidget { border:5 solid red; width:150}
+
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/dom","dijit/registry","dojo/on","dojo/dom-construct","dijit/_WidgetBase","dijit/_TemplatedMixin","dojo/_base/declare","dojo/parser","dojo/ready"],
+	
+	function(dom,registry,on,domConstruct,_WidgetBase,_TemplatedMixin,declare,parser,ready){
+
+		declare("Car",[_WidgetBase,_TemplatedMixin],{
+			make:'BMW',
+			doors:2,
+			model:'X5',
+			color:'Black',
+			baseClass:'carWidget',
+			templateString:"<div>"+
+							"<h3 align=center>Car Details</h3>"+
+							"<hr style='background-color:red;height:4'>"+
+							"<span>Company : <b>${make}</b></span><br>"+
+							"<span>Color : <b>${color}</b></span>"+
+							"<img src='images/dodge.png' />"+
+						"</div>"
+		});
+		
+		ready(function(){
+			parser.parse();
+			(new Car()).placeAt(document.body);
+		});
+	});
+
+</script>
+</head>
+<body>
+	<div id='div0' data-dojo-type="Car" data-dojo-props="make:'Hyundai',color:'Yellow'"><div>
+</body>
+</html>

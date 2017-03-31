@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>DT</title>
+</head>
+<body>
+
+<center>
+	<form id=calForm>
+		Enter Number : <input type=text value=10 name=f id=f /><br>
+		Enter Number : <input type=text value=40 name=s id=s /><br>
+					   <input type=button id='button0' value=SUM /><br>
+	</form>
+					<div id="div0">
+					</div>
+</center>
+
+	<script>
+		dojoConfig ={
+			baseUrl: "js",
+			isDebug: true, // enables debug
+			async: true, // enables AMD loader
+			packages: [
+				{
+					"name": "dojo",
+					"location": "lib/dojo"
+				}
+			]
+		};
+	</script>
+	<script src="./js/lib/dojo/dojo.js">
+	</script>
+	<script>
+		require(["dojo", "dojo/_base/array", "dojo/dom-construct","dojo/request","dojo/on","dojo/dom-prop","dojo/dom-form"],
+		         function(dojo, array, dom, request, on, domProp, domForm){
+
+						var container = dojo.byId("div0");
+						on(dojo.byId('button0'),'click',doAJAX);
+
+				         function doAJAX(){
+
+				        	 var promise=request.post("cal.jsp",{
+						         				data:domForm.toObject('calForm'),
+						         				timeout:4000
+					         				});
+
+				        	 promise.response.then(
+									     function(res){
+									     	dom.create("div", {"innerHTML": 'Result : '+res.data}, container);
+									     	dom.create("div", {"innerHTML": 'Header : '+res.getHeader('Content-Type')}, container);
+									     	dom.create("div", {"innerHTML": 'Header : '+res.getHeader('Content-Length')}, container);
+									     },
+									     function(err){
+										     	dom.create("div", {style:{ color:'red'},"innerHTML": err.message}, container);
+										 }
+							         	);
+				         }
+			     }
+	    );
+	</script>
+</body>
+</html>

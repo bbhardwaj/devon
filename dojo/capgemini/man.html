@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/dom-attr','dojo/dom-construct','dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!','dojo/NodeList-manipulate'],function (domAttr,domConstruct,query,dom,request,on){
+		
+		on(dom.byId('link0'),'click',function(){
+			var arr = query('div h1:nth-child(2)');
+			//var arr = query('div h1');
+			var rs = arr.text();
+			alert(rs);
+		});
+
+		on(dom.byId('link1'),'click',function(){
+			//var arr = query('div h2:nth-child(3)');
+			var arr = query('div h2');
+			arr.text('Manglore');
+			//var nd = arr[0];
+			//nd.innerHTML = 'Mysore';
+		});
+
+		on(dom.byId('link2'),'click',function(){
+			var arr = query('input');
+			var rs = arr.val();
+			alert(rs);
+		});
+
+
+		on(dom.byId('link3'),'click',function(){
+			var arr = query('input');
+			arr.val("Hollllaaaaaaa");
+		});
+
+		on(dom.byId('link4'),'click',function(){
+			//var nd = domConstruct.create('li');
+			//var nd = domConstruct.create('li',{innerHTML:'Bentley',title:'Luxury Car',year:2016});
+			//nd.innerHTML = 'BMW X6';
+			//domAttr.set(nd,'innerHTML','Audi Q7');
+			//var list = dom.byId('list0');
+			//domConstruct.place(nd,list,'last');
+			//domConstruct.create('li',{innerHTML:'Bentley',title:'Luxury Car',year:2016},list);
+			//domConstruct.create('li',{innerHTML:'Bentley',title:'Luxury Car',year:2016},list,'first');
+			//domConstruct.create('li',{innerHTML:'Bentley',title:'Luxury Car',year:2016},'list0','first');
+			
+			var arr = query("#list0");
+			arr.append("<li>Nano</li>");
+			//arr.append(nd);
+			//arr.prepend(nd);
+			//arr.before(nd);
+			//arr.after(nd);
+
+		});
+
+		on(dom.byId('link5'),'click',function(){
+			//var nd = dom.byId('para0');
+			//domConstruct.destroy(nd);	
+			//domConstruct.empty(nd);
+			var arr = query("#para0");
+			arr.remove();	
+
+		});
+	});
+	
+
+</script>
+</head>
+<body>
+<nav>
+	<ul>
+		<li><a href=# id='link0'>Read Text</a></li>
+		<li><a href=# id='link1'>Change Text</a></li>
+		<li><a href=# id='link2'>Read Value</a></li>
+		<li><a href=# id='link3'>Change Value</a></li>
+		<li><a href=# id='link4'>Add Item</a></li>
+		<li><a href=# id='link5'>Remove Item</a></li>
+	</ul>
+</nav>
+<p class='red'>I am a paragraph.</p>
+<p id='para0'>I am a beautiful paragraph.</p>
+<div id='div0'>OK</div>
+
+<ul id='list0'>
+	<li>BMW</li>
+	<li>Audi</li>
+	<li>Cruze</li>
+	<li class='red'>Jaguar</li>
+	<li>Ferrari</li>
+</ul>
+
+Hobbies : 
+<input type=checkbox value='Sleeping' />Sleeping
+<input type=checkbox value='Dreaming' />Dreaming
+<input type=checkbox value='Eating' />Eating
+<br/><br/><br/>
+
+Enter Value : <input type=text value='Hello Hi Bye' /><br/>
+Enter Value : <input type=text value='Hi Bye' /><br/>
+Enter Value : <input type=text value='Hello Bye' /><br/>
+Enter Value : <input type=text  /><br/>
+Enter Value : <input type=text value='Bye' /><br/>
+
+<div id='div1'>
+	<h1>Delhi</h1>
+	<h1>Mumbai</h1>
+	<h1>Banglore</h1>
+	<h1 class='red'>Pune</h1>
+	<h1>Chennai</h1>
+</div>
+	<h1>Hyderabad</h1>
+	<h1>Calcutta</h1>
+	<h1>Vizag</h1>
+	<h1>Haridwar</h1>
+
+<div>
+	<h2>Delhi</h2>
+	<h2 class='red'>Mumbai</h2>
+	<h2>Banglore</h2>
+	<h2>Pune</h2>
+	<h2>Chennai</h2>
+</div>
+	<h2>Hyderabad</h>
+	<h2>Calcutta</h2>
+	<h2>Vizag</h2>
+	<h2>Haridwar</h2>
+
+
+</body>
+</html>

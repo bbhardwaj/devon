@@ -1,0 +1,38 @@
+<html>
+<head>
+<style type="text/css">
+</style>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+	
+	require(["dojo/request","dojo/fx","dojo/_base/fx","dojo/dom-style","dojo/dom-class","dojo/dom-construct","dojo/on","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+	
+ 	 function(request,fx,baseFx,domStyle,domClass,domConstruct,on,query,dom){
+	
+		on(dom.byId("btn0"),'click',function(){
+			var pr=request.get("data.jsp");
+			
+			pr.then(
+				function(data){
+					query("#resultDiv").text(data);
+				},
+				function(err){
+					query("#resultDiv").text(err.message);
+				}
+			);
+		});
+			
+	});
+	
+</script>
+</head>
+<body>
+<center>
+		<input id='btn0' type=button value=GO />
+		
+		<div id='resultDiv'>
+		</div>
+</center>		
+</body>
+</html>

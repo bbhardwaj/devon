@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+	require(['dojo/_base/declare'],function (declare){
+
+		declare('com.capgemini.vtas.UtilMixin',null,{
+			currentJoke:function(){
+				return "Fridays are very boring.";	
+			}	
+		});
+
+		declare('com.capgemini.vtas.Employee',null,{
+			id:100,
+			name:'Jaggu',
+			salary:560000.00,
+			dob:new Date(),
+			constructor:function(args){
+				declare.safeMixin(this, args);
+				console.info('Employee constructor called!!!'); 
+			},
+			info:function(){ 
+				console.warn('Employee informantion is displayed!!!'); 
+				console.info('ID : '+this.id); 
+				console.info('Name : '+this.name); 
+				console.info('Salary : '+this.salary); 
+				console.info('DOB : '+this.dob); 
+			},
+			updateSalary:function(){ 
+				this.salary = this.salary + (this.salary * .80); 
+				console.info('Salary is updated!!!'); 
+			}
+		});
+
+
+		declare('com.capgemini.vtas.Manager',[com.capgemini.vtas.Employee,com.capgemini.vtas.UtilMixin],{
+			salary:800000.00,
+			roles:['Lead','Architect','Account Manager'],
+			info:function(){
+				this.inherited(arguments);
+				console.log(this.currentJoke());	
+				console.info('Roles : '+this.roles); 
+			}	
+		});
+		
+		var e1 = new com.capgemini.vtas.Employee({id:10,name:'Ghanshu',salary:170000.00});		
+		var m1 = new com.capgemini.vtas.Manager();		
+
+		e1.info();
+		m1.info();
+		console.log(m1.currentJoke());	
+			
+	
+	});
+</script>
+</head>
+<body>
+</body>
+</html>

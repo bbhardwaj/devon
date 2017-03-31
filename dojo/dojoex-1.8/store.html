@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<title>DT</title>
+</head>
+<body>
+
+	<h3 id="div0"></h3>
+
+	<script>
+		dojoConfig ={
+			baseUrl: "js",
+			isDebug: true, // enables debug
+			async: true, // enables AMD loader
+			packages: [
+				{
+					"name": "dojo",
+					"location": "lib/dojo"
+				}
+			]
+		};
+	</script>
+	<script src="./js/lib/dojo/dojo.js">
+	</script>
+	<script>
+		require(["dojo", "dojo/_base/array", "dojo/dom-construct","dojo/request","dojo/store/Memory"],
+		         function(dojo, array, dom, request, Memory){
+
+ 				   		 var bookStore=null;
+ 				   		 
+	         	         var promise1 = request.get("books.json", {handleAs: "json"});
+				         promise1.then(function(responseArr){
+						         var container = dojo.byId("div0");
+						         bookStore=new Memory({"data":responseArr,"idProperty":"ISBN"});
+
+						         var tem="ISBN: {ISBN} <br> Title : {Title} <br> Publisher : {Publisher}<br> Pages : {Pages}<br> Authors : {Authors}<br> Year : {Year}<br>----------------";
+
+						       	 //retrives all books
+						         var allBooks=bookStore.query();
+						         dom.create("div", {"innerHTML": "<em>All Books</em></br>================="}, container);
+						         array.forEach(allBooks, function(book, index){
+						        	 	dom.create("div", {"innerHTML": dojo.replace(tem,book)}, container);
+						         });
+
+						      	 //retrives book with ISBN 100002
+						         var someBook = bookStore.get(100002);
+						         dom.create("div", {"innerHTML": "<em>Book By ID</em></br>================="}, container);
+					        	 dom.create("div", {"innerHTML": dojo.replace(tem,someBook)}, container); 
+
+					        	 //update book and update on the store
+					        	 someBook.Title = "Learning jQuery";
+					        	 bookStore.put(someBook);
+					        	 //retrives all books again
+						         var allBooks=bookStore.query();
+						         dom.create("div", {"innerHTML": "<em>All Books after Update</em></br>================="}, container);
+						         array.forEach(allBooks, function(book, index){
+						        	 	dom.create("div", {"innerHTML": dojo.replace(tem,book)}, container);
+						         });
+
+						         var newBook = {
+						        		 "ISBN": 100004,
+						        		 "Title": "ExtJS Cook Book",
+						        		 "Publisher": "Packet",
+						        		 "Pages": 610,
+						        		 "Authors": "Alisa",
+						        		 "Year": "2013"
+						        		 }
+						        //insert a new book
+						        bookStore.add(newBook);
+						    	//retrives all books again
+						        var allBooks=bookStore.query();
+						        dom.create("div", {"innerHTML": "<em>Store after new book</em></br>================="}, container);
+						        array.forEach(allBooks, function(book, index){
+						         	dom.create("div", {"innerHTML": dojo.replace(tem,book)}, container);
+						        });
+
+
+						        //remove a book from store
+						        bookStore.remove(100002);
+						    	//retrives all books again
+						        var allBooks=bookStore.query();
+						        dom.create("div", {"innerHTML": "<em>Store after book removed</em></br>================="}, container);
+						        array.forEach(allBooks, function(book, index){
+						         	dom.create("div", {"innerHTML": dojo.replace(tem,book)}, container);
+						        });
+						        
+						         
+				         });
+		         }
+	    );
+	</script>
+</body>
+</html>

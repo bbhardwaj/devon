@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='./js/dijit/themes/soria/soria.css' />
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/on','dijit/registry','dojo/dom','dojo/parser','dojo/domReady!'],
+	    function(query,on,registry,dom,parser){
+		parser.parse();	
+		
+		on(registry.byId('palette0'),'change',function(color){
+		 	query('body').style('background-color',color);
+		});
+					
+
+	});
+
+	
+</script>
+</head>
+<body class='soria'>
+
+	<div id='palette0' data-dojo-type='dijit/ColorPalette'>
+	</div>	
+</body>
+</html>

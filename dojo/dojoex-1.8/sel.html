@@ -1,0 +1,122 @@
+<html>
+<head>
+<script type="text/javascript" src="js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/on","dojo/query","dojo/dom","dojo/domReady!"],function(on,query,dom){
+	
+		on(dom.byId("link0"),'click',function(){
+			var arr=query("h1");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link1"),'click',function(){
+			var arr=query("#div0");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link2"),'click',function(){
+			var arr=query(".g");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link3"),'click',function(){
+			//var arr=query("div h1");
+			var arr=query("div h1:nth-child(3)");
+			alert(arr.length);
+		});
+		
+		on(dom.byId("link4"),'click',function(){
+			var arr=query("div h2:first-child");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link5"),'click',function(){
+			var arr=query("h2:nth-child(even)");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link6"),'click',function(){
+			//var arr=query("input[type='checkbox']:checked");
+			//var arr=query("input[value='hello hi bye']");
+			//var arr=query("input[value^='hello']");
+			//var arr=query("input[value$='bye']");
+			//var arr=query("input[value*='hi']");
+			var arr=query("input[value=]");
+			alert(arr.length);
+		});
+
+		on(dom.byId("link7"),'click',function(){
+			var arr=query("p,div,.g");
+			alert(arr.length);
+		});
+
+	});
+	
+</script>
+</head>
+<body>
+
+<a href=# id='link0'>Find H1</a>
+<a href=# id='link1'>Find By ID</a>
+<a href=# id='link2'>Find By Class</a>
+<a href=# id='link3'>Find Pune</a>
+<a href=# id='link4'>Find Delhi</a>
+<a href=# id='link5'>Find Even</a>
+<a href=# id='link6'>Find By Attr</a>
+<a href=# id='link7'>Find Multiple</a>
+
+
+<p>I am a paragraph.</p>
+<p>I am also a paragraph.</p>
+
+Hobbies : <input type=checkbox value=E />Eating
+		<input type=checkbox value=S />Sleeping
+		<input class='g' type=checkbox value=D />Dreaming
+		<input type=checkbox value=P />Playing
+
+<br>
+
+Enter Value : <input type=text value='hello hi bye' /><br>
+Enter Value : <input type=text value='hello hi bye go' /><br>
+Enter Value : <input type=text /><br>
+Enter Value : <input type=text value='hi bye' /><br>
+
+
+<span id='span0'>
+	<ul>
+		<li>Nano</li>
+		<li class='g'>Audi</li>
+		<li>BMW</li>
+	</ul>
+</span>
+
+	<div id='div0'>
+		<h1>Delhi</h1>
+		<h1 class='g'>Mumbai</h1>
+		<h1>Pune</h1>
+		<h1>Calcutta</h1>
+		<h1>Hyderabad</h1>
+	</div>
+
+	<h1>Chennai</h1>
+	<h1>Banglore</h1>
+	<h1>Chandigarh</h1>
+	<h1>GOA</h1>
+
+<div>
+	<h2>Delhi</h2>
+	<h2>Mumbai</h2>
+	<h2>Pune</h2>
+	<h2>Calcutta</h2>
+	<h2>Hyderabad</h2>
+</div>
+	<h2>Chennai</h2>
+	<h2 class='g'>Banglore</h2>
+	<h2>Chandigarh</h2>
+	<h2>GOA</h2>
+		
+		
+</body>
+</html>

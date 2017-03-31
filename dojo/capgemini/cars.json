@@ -1,0 +1,12 @@
+[
+	{"vin":1000,"model":"X5","make":"BMW","price":2300000.00,"color":"Black"},
+	{"vin":1001,"model":"A5","make":"Audi","price":2670000.00,"color":"White"},
+	{"vin":1002,"model":"Q7","make":"Audi","price":8900000.00,"color":"Yellow"},
+	{"vin":1003,"model":"A1","make":"BMW","price":900000.00,"color":"Black"},
+	{"vin":1004,"model":"X1","make":"BMW","price":3900000.00,"color":"Red"},
+	{"vin":1005,"model":"X6","make":"BMW","price":5600000.00,"color":"Black"},
+	{"vin":1006,"model":"A2","make":"Audi","price":3470000.00,"color":"White"},
+	{"vin":1007,"model":"Q5","make":"Audi","price":900000.00,"color":"Yellow"},
+	{"vin":1008,"model":"X2","make":"BMW","price":1000000.00,"color":"Black"},
+	{"vin":1009,"model":"X4","make":"BMW","price":2900000.00,"color":"Red"}
+]

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!','dojo/NodeList-manipulate'],function (query,dom,request,on){
+		
+		on(dom.byId('link0'),'click',function (){
+			var pr = request.get("holidays.txt");
+			pr.then(handleData,handleError);
+			console.log("AJAX request sent!!!!");
+		});
+
+		function handleData(content) {
+			console.log("Data received!!!!");
+			query('#div0').append(content);
+		}
+
+		function handleError(err) {
+			console.log("Error in communication.........");
+		}
+	});
+
+</script>
+</head>
+<body>
+	<a id='link0' href=#>Load Info</a> 
+	<div id='div0'>
+	</div>
+</body>
+</html>

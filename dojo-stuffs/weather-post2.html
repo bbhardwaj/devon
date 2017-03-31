@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!','dojo/NodeList-manipulate'],function (query,dom,request,on){
+		
+		query('#btn0').on('click',function(){
+	
+			var parms = {
+				city:query('select[name=city]').val(),
+				day:query('input[name=day]').val(),
+				month:query('input[name=month]').val()
+			};
+			request.post("weather.jsp",{query:parms})
+				.then(function (content) {
+					query('#div0').text(content);
+				});
+		});
+	});
+
+</script>
+</head>
+<body>
+	Choose City : 
+	<select name=city>
+		<option value=''>--Select--</option>
+		<option value=Delhi>Delhi</option>
+		<option value=Pune>Pune</option>
+		<option value=Mumbai>Mumbai</option>
+		<option value=Banglore>Banglore</option>
+	</select><br/>
+	Enter Day : <input type=text name=day value=15 /><br/>
+	Enter Month : <input type=text name=month value=5 /><br/>
+		     <input type=button id='btn0' value='Show Weather' /><br/>
+	<br/><br/>
+	<div id='div0'>
+	</div>
+</body>
+</html>

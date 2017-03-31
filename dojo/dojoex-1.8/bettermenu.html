@@ -1,0 +1,62 @@
+<html>
+<head>
+<link type='text/css' rel='stylesheet' href='./js/dijit/themes/claro/claro.css' />
+<script type="text/javascript">
+ 
+	var dojoConfig={parseOnLoad:true};
+
+</script>
+<script type="text/javascript" src="./js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dijit/registry","dojo/parser","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+
+           function(registry,parser,query,dom){
+		parser.parse();
+
+		
+				
+		
+	});
+
+
+</script>
+</head>
+<body class='claro'>
+
+<div dojoType="dijit/Menu">
+<div dojoType="dijit/MenuItem">Disaster Menu</div>
+<div dojoType="dijit/MenuSeparator"></div>
+<div dojoType="dijit/PopupMenuItem">
+<span>Natural</span>
+<div dojoType="dijit/Menu">
+<div dojoType="dijit/MenuItem">Boll Weevils</div>
+<div dojoType="dijit/MenuItem">Flood</div>
+</div>
+</div>
+<div dojoType="dijit/PopupMenuItem">
+<span>Emotional</span>
+<div dojoType="dijit/Menu">
+<div dojoType="dijit/MenuItem">Spouse Left You</div>
+<div dojoType="dijit/MenuItem">Spouse Caught You Cheating</div>
+<div dojoType="dijit/MenuItem">
+Spouse Caught You Cheating and Left
+</div>
+<div dojoType="dijit/MenuItem">Spouse With Best Friend
+<script type="dojo/method" event="onClick">
+console.log("Now that is REALLY bad!" );
+</script>
+</div>
+</div>
+</div>
+<div dojoType="dijit/PopupMenuItem">
+<span>Medical</span>
+<div dojoType="dijit/Menu">
+<div dojoType="dijit/MenuItem">TB</div>
+<div dojoType="dijit/MenuItem">Rheum-y-tism</div>
+</div>
+</div>
+</div>
+</body>
+</html>

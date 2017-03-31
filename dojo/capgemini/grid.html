@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel='stylesheet' href='./js/dijit/themes/soria/soria.css' />
+<link rel='stylesheet' href='./js/dojox/grid/resources/soriaGrid.css' />
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	require(['dojo/store/JsonRest','dojox/grid/cells','dojo/data/ObjectStore','dojo/store/Memory','dojox/grid/DataGrid','dojo/on','dijit/registry','dojo/dom','dojo/parser','dojo/domReady!','dojox/grid/_CheckBoxSelector'],
+	    function(JsonRest,gridCells,ObjectStore,Memory,DataGrid,on,registry,dom,parser){
+		parser.parse();
+
+		var carRemoteStore = new JsonRest({idProperty:'vin',target:'cars.jsp'});
+		var carStore = new ObjectStore({objectStore:carRemoteStore});
+
+		var grid = new DataGrid({
+				store:carStore,
+				query:{vin:'*'},
+				structure:[  
+ 					  {
+				            type: "dojox.grid._CheckBoxSelector"
+        				  },
+					  {
+						noScroll:true,
+						cells:[
+						  new gridCells.RowIndex({ width: "10%" }),
+						  {name:'VIN',field:'vin'},
+						  {name:'Name',field:'name'}
+						]
+					  },
+					  {
+						cells:[
+						  {name:'Company',field:'make'},
+						  {name:'Price',field:'price',width:'180px',editable: true},
+						  {name:'Color',field:'color'}
+						]
+					  }
+				]
+		},'grid0');
+
+				
+		//grid.placeAt('grid0');
+		grid.set('style',"width:800px");
+		grid.startup();
+	});
+
+	
+</script>
+</head>
+<body class='soria'>
+	<div id='grid0'>
+	</div>	
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="./js/dojo/dojo.js">
+</script>
+<script>
+
+	//Async Module Loader
+	require(['dojo/query','dojo/dom','dojo/request','dojo/on','dojo/domReady!'],function (query,dom,request,on){
+
+		//var nd = dom.byId('div0');
+		//alert(nd);
+
+		//var arr = query('h1');
+		//var arr = query('.red');
+		//var arr = query('#div0');
+		//var arr = query('div h1');
+		//var arr = query('div > h1');
+		//var arr = query('div h1:nth-child(2)');
+		//var arr = query('div > h1:last-child');
+		//var arr = query('div h1:nth-child(even)');
+		//var arr = query('div h1:nth-child(odd)');
+		//var arr = query('div,p,.red');
+		//var arr = query('input');
+		//var arr = query('input[type=checkbox]');
+		//var arr = query("input[value='Hello Hi Bye']");
+		//var arr = query("input[value^='Hi']");
+		//var arr = query("input[value$='Bye']");
+		//var arr = query("input[value*='Hello']");
+		//var arr = query("input[value]");
+		//var arr = query("input[value='']");
+		//var arr = query("[value^='Hi']");
+		var arr = query('div h1:not(:last-child)');
+		alert(arr.length);
+	});
+	
+
+</script>
+</head>
+<body>
+<p class='red'>I am a paragraph.</p>
+<p id='para0'>I am a beautiful paragraph.</p>
+<div id='div0'>OK</div>
+
+<ul>
+	<li>BMW</li>
+	<li>Audi</li>
+	<li>Cruze</li>
+	<li class='red'>Jaguar</li>
+	<li>Ferrari</li>
+</ul>
+
+Hobbies : 
+<input type=checkbox value='Sleeping' />Sleeping
+<input type=checkbox value='Dreaming' />Dreaming
+<input type=checkbox value='Eating' />Eating
+<br/><br/><br/>
+
+Enter Value : <input type=text value='Hello Hi Bye' /><br/>
+Enter Value : <input type=text value='Hi Bye' /><br/>
+Enter Value : <input type=text value='Hello Bye' /><br/>
+Enter Value : <input type=text  /><br/>
+Enter Value : <input type=text value='Bye' /><br/>
+
+<div id='div1'>
+	<h1>Delhi</h1>
+	<h1>Mumbai</h1>
+	<h1>Banglore</h1>
+	<h1 class='red'>Pune</h1>
+	<h1>Chennai</h1>
+</div>
+	<h1>Hyderabad</h1>
+	<h1>Calcutta</h1>
+	<h1>Vizag</h1>
+	<h1>Haridwar</h1>
+
+<div>
+	<h2>Delhi</h2>
+	<h2 class='red'>Mumbai</h2>
+	<h2>Banglore</h2>
+	<h2>Pune</h2>
+	<h2>Chennai</h2>
+</div>
+	<h2>Hyderabad</h>
+	<h2>Calcutta</h2>
+	<h2>Vizag</h2>
+	<h2>Haridwar</h2>
+
+
+</body>
+</html>

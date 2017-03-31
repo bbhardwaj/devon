@@ -1,0 +1,138 @@
+<html>
+<head>
+<link type='text/css' rel='stylesheet' href='./js/dijit/themes/claro/claro.css' />
+<script type="text/javascript">
+ 
+	var dojoConfig={parseOnLoad:true};
+
+</script>
+<script type="text/javascript" src="./js/dojo/dojo.js">
+</script>
+<script type="text/javascript">
+
+	require(["dojo/dom-form","dojo/request","dojo/on","dijit/registry","dijit/form/Button","dojo/parser","dojo/query","dojo/dom","dojo/domReady!","dojo/NodeList-manipulate"],
+
+           function(domForm,request,on,registry,Button,parser,query,dom){
+		parser.parse();
+
+		on(registry.byId('register0'),'click',function(){
+
+			var pr=request.post("reg.jsp",{data:domForm.toObject('userForm')});
+	
+			pr.then(
+
+				function(data){
+					query("#resultDiv").html(data);
+				
+				}
+			);
+	
+		});
+
+	
+	});
+
+	function displayValue(val){
+		document.getElementById('displayDiv').innerHTML=parseInt(val);
+	}
+
+</script>
+</head>
+<body class='claro'>
+<center>
+<div id='resultDiv'></div>
+<form id='userForm'>
+<table>
+	<tr>
+		<td>User ID:</td>
+		<td><input type=text value=raj123  id='userid' name='userid' data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'ID is required!'" /></td>
+	</tr>
+	<tr>
+		<td>Name:</td>
+		<td><input type=text value=rajkr  id='name' name='name' data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'Name is required!'" /></td>
+	</tr>
+	<tr>
+		<td>Password:</td>
+		<td><input type=password value=rajkumar  id='pass' name='pass' data-dojo-type="dijit/form/TextBox" /></td>
+	</tr>
+	<tr>
+		<td>Gender:</td>
+		<td>
+			<input type=radio value=M  id='gender0' name='gender' data-dojo-type="dijit/form/RadioButton" />Male
+			<input type=radio value=F  id='gender1' name='gender' data-dojo-type="dijit/form/RadioButton" />Female
+		</td>
+	</tr>
+	<tr>
+		<td>Wakeup Time:</td>
+		<td><input type=checkbox  id='wakeup' name='wakeup' data-dojo-type="dijit/form/CheckBox" />Do U getup at 4 A.M.?</td>
+	</tr>
+	<tr>
+		<td>Age:</td>
+		<td><input type=text value=26  id='age' name='age' data-dojo-type="dijit/form/NumberTextBox" data-dojo-props="required:true,missingMessage:'Age is required!',invalidMessage:'Age must be in numbers!',constraints:{min:20,max:45},rangeMessage:'Age should be between 20 and 45 only!'" /></td>
+	</tr>
+	<tr>
+		<td>Phone:</td>
+		<td><input type=text value='91-22-56564554'  id='phone' name='phone' data-dojo-type="dijit/form/ValidationTextBox" data-dojo-props="required:true,missingMessage:'Phone is required!',invalidMessage:'Phone should be as xx-xx-xxxxxxxx'" regExp="^\d{2}-\d{2}-\d{8}" /></td>
+	</tr>
+	<tr>
+		<td>DOB:</td>
+		<td><input type=text  id='dob' name='dob' data-dojo-type="dijit/form/DateTextBox" data-dojo-props="constraints:{max:new Date(),datePattern:'dd-MM-yyyy'}" /></td>
+	</tr>
+	<tr>
+		<td>TOB:</td>
+		<td><input type=text  id='tob' name='tob' data-dojo-type="dijit/form/TimeTextBox" data-dojo-props="" /></td>
+	</tr>
+	<tr>
+		<td>Address:</td>
+		<td><textarea id='addr' name='addr' data-dojo-type="dijit/form/Textarea">10,Janpath,New Delhi</textarea></td>
+	</tr>
+	<tr>
+		<td>City:</td>
+		<td>
+			<select id='city' name='city' data-dojo-type="dijit/form/FilteringSelect" autocomplete=true>
+				<option value='Delhi'>Delhi</option>
+				<option value='Darzling'>Darzling</option>
+				<option value='Chennai'>Chennai</option>
+				<option value='Dehradun'>Dehradun</option>
+				<option value='Cochin'>Cochin</option>
+				<option value='Mumbai'>Mumbai</option>
+				<option value='Meerut'>Meerut</option>
+				<option value='Chhatisgarh'>Chhatisgarh</option>
+				<option value='Muradabad'>Muradabad</option>
+				<option value='Calcutta'>Calcutta</option>
+				<option value='Mysore'>Mysore</option>
+				<option value='Dhanbad'>Dhanbad</option>
+				<option value='Chandigarh'>Chandigarh</option>
+				<option value='Muzaffarnagar'>Muzaffarnagar</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Balance:</td>
+		<td><input type=text value='24000000000'  id='bal' name='bal' data-dojo-type="dijit/form/CurrencyTextBox" currency="GBP" /></td>
+	</tr>
+	<tr>
+		<td>Weight(KG):</td>
+		<td>
+			<input style="width:70%;float:left" type=text value='56' id='weight' name='weight' data-dojo-type="dijit/form/HorizontalSlider" minimum=20 maximum=190 onChange=displayValue />
+			<div style="width:30%" id='displayDiv'></div>
+		</td>
+	</tr>
+	<tr>
+		<td>Height(cm):</td>
+		<td>
+			<input type=text value='96' id='height' name='height' data-dojo-type="dijit/form/NumberSpinner" minimum=20 maximum=190 />
+		</td>
+	</tr>
+	<tr>
+		<td colspan=2>
+			<input type=button value='Register' label='Register' id='register0' data-dojo-type="dijit/form/Button" />
+		</td>
+	</tr>
+
+	
+</table>
+</form>
+</center>
+</body>
+</html>
